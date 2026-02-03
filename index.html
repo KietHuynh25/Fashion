@@ -14,30 +14,42 @@
         .logo img { height: 40px; }
         nav a { text-decoration: none; color: #000; font-size: 12px; font-weight: bold; margin-left: 20px; text-transform: uppercase; }
 
-        /* Giỏ hàng */
+        /* Giỏ hàng chính */
         .cart-container { display: grid; grid-template-columns: 2fr 1fr; gap: 40px; margin-top: 40px; min-height: 400px; }
-        .cart-item { display: flex; gap: 20px; padding: 20px 0; border-bottom: 1px solid var(--border); }
-        .product-img { width: 120px; height: 150px; background: var(--secondary-bg); object-fit: cover; }
-        .item-details h3 { font-size: 14px; margin: 0 0 10px; text-transform: uppercase; }
-        .qty-box { display: flex; align-items: center; border: 1px solid #ccc; width: fit-content; margin-top: 10px; }
-        .qty-box button { border: none; background: none; padding: 5px 12px; cursor: pointer; }
-        .qty-box input { width: 30px; text-align: center; border: none; outline: none; }
+        .cart-item { display: flex; flex-direction: column; gap: 15px; padding: 25px 0; border-bottom: 1px solid var(--border); }
 
-        /* Bảng giá */
+        /* Dòng 1: Tên sản phẩm */
+        .item-name { font-size: 16px; font-weight: bold; text-transform: uppercase; margin: 0; }
+
+        /* Dòng 2: Hình ảnh & Lựa chọn */
+        .item-mid-row { display: flex; gap: 20px; align-items: flex-start; }
+        .image-gallery { display: flex; gap: 8px; }
+        .product-img { width: 80px; height: 100px; background: var(--secondary-bg); object-fit: cover; border: 1px solid #f0f0f0; }
+        
+        .selection-container { display: flex; gap: 10px; }
+        .selector-frame { border: 1px solid #000; padding: 8px 12px; min-width: 100px; }
+        .selector-frame label { display: block; font-size: 10px; text-transform: uppercase; color: #888; margin-bottom: 4px; }
+        .selector-frame select { border: none; background: transparent; width: 100%; outline: none; font-size: 13px; font-weight: bold; cursor: pointer; }
+
+        /* Dòng 3: Giá & Số lượng */
+        .item-bottom-row { display: flex; justify-content: space-between; align-items: center; margin-top: 5px; }
+        .item-total-price { font-size: 18px; font-weight: bold; }
+        .qty-box { display: flex; align-items: center; border: 1px solid #ccc; width: fit-content; }
+        .qty-box button { border: none; background: none; padding: 5px 12px; cursor: pointer; font-size: 16px; }
+        .qty-box input { width: 40px; text-align: center; border: none; outline: none; font-weight: bold; }
+
+        /* Bảng giá bên phải */
         .summary-box { background: var(--secondary-bg); padding: 25px; height: fit-content; position: sticky; top: 20px; }
         .row { display: flex; justify-content: space-between; margin-bottom: 10px; font-size: 14px; }
         .total-row { border-top: 1px solid #ddd; padding-top: 15px; font-weight: bold; font-size: 18px; margin-top: 15px; }
         .btn-order { width: 100%; background: #000; color: #fff; border: none; padding: 15px; cursor: pointer; font-weight: bold; margin-top: 20px; }
 
-        /* FOOTER (Theo hình bạn gửi) */
+        /* Footer */
         footer { border-top: 1px solid var(--border); margin-top: 80px; padding: 60px 0 40px; }
         .footer-grid { display: grid; grid-template-columns: 1.5fr 1fr 1.5fr 1.5fr 2fr; gap: 30px; font-size: 13px; }
         .footer-col h4 { margin: 0 0 20px; font-size: 13px; text-transform: uppercase; }
         .footer-col ul { list-style: none; padding: 0; margin: 0; }
         .footer-col li { margin-bottom: 10px; color: #666; cursor: pointer; }
-        .footer-col li:hover { color: #000; }
-        
-        /* Đăng ký nhận tin */
         .newsletter input { border: none; border-bottom: 1px solid #000; width: 100%; padding: 10px 0; outline: none; margin-bottom: 15px; }
         .btn-send { border: 1px solid #000; background: none; padding: 10px 25px; cursor: pointer; text-transform: uppercase; font-size: 11px; font-weight: bold; }
         .social-icons { display: flex; gap: 10px; margin-top: 20px; }
@@ -49,7 +61,7 @@
 <div class="wrapper">
     <header>
         <div class="logo">
-            <img src="logo.png" alt="Logo" style="height: 70px; width: auto;">
+            <img src="D:\Báo\logo.png" alt="Logo" style="height: 70px; width: auto;">
         </div>
         <nav>
             <a href="#">Về thương hiệu</a>
@@ -63,10 +75,35 @@
             <h2>GIỎ HÀNG (<span id="count">2</span>)</h2>
             
             <div class="cart-item" data-price="25000">
-                <img src="https://via.placeholder.com/120x150" class="product-img">
-                <div class="item-details">
-                    <h3>Bộ 1</h3>
-                    <div class="price">25.000 đ</div>
+                <h3 class="item-name">Bộ 1 - Sơ mi & Quần Tây</h3>
+                
+                <div class="item-mid-row">
+                    <div class="image-gallery">
+                        <img src="https://via.placeholder.com/80x100?text=H1" class="product-img">
+                        <img src="https://via.placeholder.com/80x100?text=H2" class="product-img">
+                        <img src="https://via.placeholder.com/80x100?text=H3" class="product-img">
+                    </div>
+                    <div class="selection-container">
+                        <div class="selector-frame">
+                            <label>Màu sắc</label>
+                            <select>
+                                <option>Trắng</option>
+                                <option>Đen</option>
+                            </select>
+                        </div>
+                        <div class="selector-frame">
+                            <label>Kích thước</label>
+                            <select>
+                                <option>Size M</option>
+                                <option>Size L</option>
+                                <option>Size XL</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="item-bottom-row">
+                    <div class="item-total-price">25.000 đ</div>
                     <div class="qty-box">
                         <button onclick="updateQty(this, -1)">-</button>
                         <input type="text" value="1" readonly>
@@ -76,10 +113,33 @@
             </div>
 
             <div class="cart-item" data-price="25000">
-                <img src="https://via.placeholder.com/120x150" class="product-img">
-                <div class="item-details">
-                    <h3>Bộ 2</h3>
-                    <div class="price">25.000 đ</div>
+                <h3 class="item-name">Bộ 2 - Áo Khoác Bomber</h3>
+                
+                <div class="item-mid-row">
+                    <div class="image-gallery">
+                        <img src="https://via.placeholder.com/80x100?text=H1" class="product-img">
+                        <img src="https://via.placeholder.com/80x100?text=H2" class="product-img">
+						<img src="https://via.placeholder.com/80x100?text=H3" class="product-img">
+                    </div>
+                    <div class="selection-container">
+                        <div class="selector-frame">
+                            <label>Màu sắc</label>
+                            <select>
+                                <option>Xanh Navy</option>
+                                <option>Xám</option>
+                            </select>
+                        </div>
+                        <div class="selector-frame">
+                            <label>Kích thước</label>
+                            <select>
+                                <option>Free Size</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="item-bottom-row">
+                    <div class="item-total-price">25.000 đ</div>
                     <div class="qty-box">
                         <button onclick="updateQty(this, -1)">-</button>
                         <input type="text" value="1" readonly>
@@ -105,7 +165,7 @@
     <footer>
         <div class="footer-grid">
             <div class="footer-col">
-                <img src="logo.png" style="height: 70px; width: auto;">
+                <img src="D:\Báo\logo.png" style="height: 70px; width: auto;">
                 <p style="font-size:11px; color:#999">Tìm phong cách độc bản cùng thương hiệu của chúng tôi.</p>
                 <div class="social-icons">
                     <div class="icon-box">Ig</div>
@@ -141,8 +201,14 @@
     function calculate() {
         let sub = 0, c = 0;
         document.querySelectorAll('.cart-item').forEach(item => {
+            let unitPrice = parseInt(item.dataset.price);
             let q = parseInt(item.querySelector('input').value);
-            sub += q * parseInt(item.dataset.price);
+            let itemTotal = q * unitPrice;
+            
+            // Cập nhật giá hiển thị ngay tại dòng 3 của sản phẩm
+            item.querySelector('.item-total-price').innerText = format(itemTotal);
+            
+            sub += itemTotal;
             c += q;
         });
         document.getElementById('subtotal').innerText = format(sub);
@@ -155,6 +221,8 @@
         let v = parseInt(input.value) + d;
         if (v > 0) { input.value = v; calculate(); }
     }
+    
+    // Khởi tạo tính toán lần đầu
     calculate();
 </script>
 
