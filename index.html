@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cửa Hàng Thời Trang - Aerospace Style</title>
+    <style>
+        :root { --bg-color: #ffffff; --secondary-bg: #f5f5f5; --text-color: #000; --border: #eee; }
+        body { font-family: 'Helvetica', Arial, sans-serif; margin: 0; color: var(--text-color); line-height: 1.6; }
+        .wrapper { max-width: 1100px; margin: 0 auto; padding: 20px; }
+        
+        /* Header */
+        header { display: flex; justify-content: space-between; align-items: center; padding: 20px 0; border-bottom: 1px solid var(--border); }
+        .logo img { height: 40px; }
+        nav a { text-decoration: none; color: #000; font-size: 12px; font-weight: bold; margin-left: 20px; text-transform: uppercase; }
+
+        /* Giỏ hàng */
+        .cart-container { display: grid; grid-template-columns: 2fr 1fr; gap: 40px; margin-top: 40px; min-height: 400px; }
+        .cart-item { display: flex; gap: 20px; padding: 20px 0; border-bottom: 1px solid var(--border); }
+        .product-img { width: 120px; height: 150px; background: var(--secondary-bg); object-fit: cover; }
+        .item-details h3 { font-size: 14px; margin: 0 0 10px; text-transform: uppercase; }
+        .qty-box { display: flex; align-items: center; border: 1px solid #ccc; width: fit-content; margin-top: 10px; }
+        .qty-box button { border: none; background: none; padding: 5px 12px; cursor: pointer; }
+        .qty-box input { width: 30px; text-align: center; border: none; outline: none; }
+
+        /* Bảng giá */
+        .summary-box { background: var(--secondary-bg); padding: 25px; height: fit-content; position: sticky; top: 20px; }
+        .row { display: flex; justify-content: space-between; margin-bottom: 10px; font-size: 14px; }
+        .total-row { border-top: 1px solid #ddd; padding-top: 15px; font-weight: bold; font-size: 18px; margin-top: 15px; }
+        .btn-order { width: 100%; background: #000; color: #fff; border: none; padding: 15px; cursor: pointer; font-weight: bold; margin-top: 20px; }
+
+        /* FOOTER (Theo hình bạn gửi) */
+        footer { border-top: 1px solid var(--border); margin-top: 80px; padding: 60px 0 40px; }
+        .footer-grid { display: grid; grid-template-columns: 1.5fr 1fr 1.5fr 1.5fr 2fr; gap: 30px; font-size: 13px; }
+        .footer-col h4 { margin: 0 0 20px; font-size: 13px; text-transform: uppercase; }
+        .footer-col ul { list-style: none; padding: 0; margin: 0; }
+        .footer-col li { margin-bottom: 10px; color: #666; cursor: pointer; }
+        .footer-col li:hover { color: #000; }
+        
+        /* Đăng ký nhận tin */
+        .newsletter input { border: none; border-bottom: 1px solid #000; width: 100%; padding: 10px 0; outline: none; margin-bottom: 15px; }
+        .btn-send { border: 1px solid #000; background: none; padding: 10px 25px; cursor: pointer; text-transform: uppercase; font-size: 11px; font-weight: bold; }
+        .social-icons { display: flex; gap: 10px; margin-top: 20px; }
+        .icon-box { border: 1px solid #ccc; padding: 5px 8px; font-size: 10px; }
+    </style>
+</head>
+<body>
+
+<div class="wrapper">
+    <header>
+        <div class="logo">
+            <img src="D:\Báo\logo.png" alt="Logo" style="height: 70px; width: auto;">
+        </div>
+        <nav>
+            <a href="#">Về thương hiệu</a>
+            <a href="#">Thông tin</a>
+            <a href="#">Liên hệ</a>
+        </nav>
+    </header>
+
+    <main class="cart-container">
+        <section>
+            <h2>GIỎ HÀNG (<span id="count">2</span>)</h2>
+            
+            <div class="cart-item" data-price="25000">
+                <img src="https://via.placeholder.com/120x150" class="product-img">
+                <div class="item-details">
+                    <h3>Bộ 1</h3>
+                    <div class="price">25.000 đ</div>
+                    <div class="qty-box">
+                        <button onclick="updateQty(this, -1)">-</button>
+                        <input type="text" value="1" readonly>
+                        <button onclick="updateQty(this, 1)">+</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="cart-item" data-price="25000">
+                <img src="https://via.placeholder.com/120x150" class="product-img">
+                <div class="item-details">
+                    <h3>Bộ 2</h3>
+                    <div class="price">25.000 đ</div>
+                    <div class="qty-box">
+                        <button onclick="updateQty(this, -1)">-</button>
+                        <input type="text" value="1" readonly>
+                        <button onclick="updateQty(this, 1)">+</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <aside>
+            <div class="summary-box">
+                <div class="row"><span>Tạm tính:</span> <span id="subtotal">0 đ</span></div>
+                <div class="row"><span>Vận chuyển:</span> <span>70.000 đ</span></div>
+                <div class="row total-row">
+                    <span>TỔNG CỘNG:</span>
+                    <span id="total">0 đ</span>
+                </div>
+                <button class="btn-order">TIẾN HÀNH ĐẶT HÀNG</button>
+            </div>
+        </aside>
+    </main>
+
+    <footer>
+        <div class="footer-grid">
+            <div class="footer-col">
+                <img src="D:\Báo\logo.png" style="height: 70px; width: auto;">
+                <p style="font-size:11px; color:#999">Tìm phong cách độc bản cùng thương hiệu của chúng tôi.</p>
+                <div class="social-icons">
+                    <div class="icon-box">Ig</div>
+                    <div class="icon-box">Fb</div>
+                    <div class="icon-box">In</div>
+                </div>
+            </div>
+            <div class="footer-col">
+                <h4>Thông tin chung</h4>
+                <ul><li>FAQ</li><li>Giao hàng</li><li>Hoàn trả</li><li>Liên hệ</li></ul>
+            </div>
+            <div class="footer-col">
+                <h4>Liên hệ</h4>
+                <ul><li>(+84) 395230187</li><li>info@brand.com</li></ul>
+            </div>
+            <div class="footer-col">
+                <h4>Làm việc</h4>
+                <ul><li>10:00 - 22:00</li><li>Không ngày nghỉ</li></ul>
+            </div>
+            <div class="footer-col newsletter">
+                <h4>Giảm giá 5% cho tất cả</h4>
+                <input type="text" placeholder="Email của bạn">
+                <button class="btn-send">GỬI ĐI</button>
+            </div>
+        </div>
+    </footer>
+</div>
+
+<script>
+    const ship = 70000;
+    function format(n) { return n.toLocaleString('vi-VN') + ' đ'; }
+
+    function calculate() {
+        let sub = 0, c = 0;
+        document.querySelectorAll('.cart-item').forEach(item => {
+            let q = parseInt(item.querySelector('input').value);
+            sub += q * parseInt(item.dataset.price);
+            c += q;
+        });
+        document.getElementById('subtotal').innerText = format(sub);
+        document.getElementById('total').innerText = format(sub + ship);
+        document.getElementById('count').innerText = c;
+    }
+
+    function updateQty(btn, d) {
+        let input = btn.parentElement.querySelector('input');
+        let v = parseInt(input.value) + d;
+        if (v > 0) { input.value = v; calculate(); }
+    }
+    calculate();
+</script>
+
+</body>
+</html>
