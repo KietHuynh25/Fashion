@@ -106,7 +106,7 @@
                     <div class="item-total-price">25.000 đ</div>
                     <div class="qty-box">
                         <button onclick="updateQty(this, -1)">-</button>
-                        <input type="text" value="1" readonly>
+                        <input type="text" value="0" readonly>
                         <button onclick="updateQty(this, 1)">+</button>
                     </div>
                 </div>
@@ -142,7 +142,7 @@
                     <div class="item-total-price">25.000 đ</div>
                     <div class="qty-box">
                         <button onclick="updateQty(this, -1)">-</button>
-                        <input type="text" value="1" readonly>
+                        <input type="text" value="0" readonly>
                         <button onclick="updateQty(this, 1)">+</button>
                     </div>
                 </div>
@@ -219,7 +219,7 @@
     function updateQty(btn, d) {
         let input = btn.parentElement.querySelector('input');
         let v = parseInt(input.value) + d;
-        if (v > 0) { input.value = v; calculate(); }
+        if (v >= 0) { input.value = v; calculate(); }
     }
     
     // Khởi tạo tính toán lần đầu
